@@ -1,5 +1,6 @@
-discord-plate-bot
+# discord-plate-bot
 一款基於 Discord 的自動化車牌查詢機器人，透過 Selenium 自動登入 HiNet 小額付費服務，支援汽車與機車車籍查詢，並內建系統匣最小化與隱藏主控台功能。
+
 
 功能介紹
 - 自動登入 公路監理資訊網（MVDVAN）並查詢車籍資料
@@ -10,7 +11,47 @@ discord-plate-bot
 - 啟動時最小化至系統匣（Windows），可從托盤選單喚回或關閉程式
 - 支援單一 config.json 設定檔，首次啟動時自動產生範本
 
-快速上手
+## 快速上手
+
+## 使用 .exe 檔（Windows）
+
+如果你已經用 PyInstaller 將程式打包成單一 `.exe`，可以直接在沒有安裝 Python 環境的 Windows 電腦上執行：
+
+1. **準備檔案**  
+   - `CarCrawlerBot.exe`（或你命名的可執行檔）  
+   - 同目錄下放入 `icon.ico`（選填，若編譯時有指定就不必）  
+   - 同目錄下放入 `config.json`（若第一次執行尚未產生，exe 會自動建立範本）
+
+2. **第一次啟動**  
+   > 若目錄下不存在 `config.json`，程式會自動建立範本並退出  
+   - 雙擊 `CarCrawlerBot.exe`  
+   - 看到「已產生範本 config.json，請填完再啟動！」就代表建立成功  
+
+3. **填寫設定**  
+   - 用記事本（Notepad）或任何文字編輯器打開 `config.json`  
+   - 填入你的設定：  
+     ```jsonc
+     {
+       "bot_token":    "YOUR_DISCORD_BOT_TOKEN",
+       "hinet_uid":    "你的 HiNet 帳號",
+       "hinet_pwd":    "你的 HiNet 密碼",
+       "owner_id":     123456789012345678
+     }
+     ```
+   - 存檔後關閉編輯器
+
+4. **再次啟動**  
+   - 雙擊 `CarCrawlerBot.exe`  
+   - 程式會隱藏主控台並最小化到系統匣  
+   - 托盤（Tray）圖示右鍵 → **顯示主控台** 可查看日誌，或選 **離開** 完全關閉
+
+> **Tip.**  
+> - 若要保留 Console 輸出，不要使用 `--noconsole` 參數重新打包；  
+> - 托盤圖示只能在程式運行中用滑鼠操作，不會在按下❌後自動關閉；  
+> - 如需重新顯示或關閉主控台，可從托盤選單呼叫。
+
+
+## 使用原始碼
 1. **Clone 本專案**
    ```bash
    git clone https://github.com/YourUsername/discord-plate-bot.git
