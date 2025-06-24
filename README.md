@@ -29,7 +29,7 @@ discord-plate-bot
    ```jsonc
    {
      "bot_token": "YOUR_DISCORD_BOT_TOKEN",
-     "hinet_uid": "28602454",
+     "hinet_uid": "HINET_ID",
      "hinet_pwd": "YOUR_HINET_PASSWORD",
      "owner_id": 123456789012345678
    }
